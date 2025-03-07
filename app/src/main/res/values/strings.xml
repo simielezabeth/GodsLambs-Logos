@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Gods Lambs</string>
+    <string name="logos_quiz">Logos Quiz</string>
+    <string name="score_title">Congrats! You have passed</string>
+    <string name="score_subtitle">You got %1$d out of %2$d questions correct</string>
+    <string name="finish_button">Finish</string>
+    <string name="progress_text">%1$d%%</string>
+    <string name="choose_option_alert">Please select answer to continue</string>
+    <string name="close">Close</string>
+    <string name="sub_text">Kerala Catholic Bible Society of KCBC Bible Commission</string>
+    <string name="success_alert">Congrats! You have passed</string>
+    <string name="fail_alert">Oops! You have Failed</string>
+
+</resources>

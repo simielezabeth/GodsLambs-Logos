@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<resources>-->
+
+<!--    <style name="Theme.GodsLambs" parent="android:Theme.Material.Light.NoActionBar" >-->
+<!--        <item name="android:colorPrimary">@color/white</item>-->
+<!--    </style>-->
+<!--</resources>-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!-- Base application theme. -->
+<style name="Base.Theme.GodsLambs" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your light theme here. -->
+    <item name="colorPrimary">@color/colorAccent</item>
+</style>
+
+<style name="Theme.GodsLambs" parent="Base.Theme.GodsLambs" />
+    <style name="AlertDialogTheme" parent="Theme.Material3.Light.Dialog">
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MyDialog</item>
+    </style>
+
+    <style name="ShapeAppearance.MyDialog" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+
+    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:windowMinWidthMajor">75%</item>
+        <item name="android:windowMinWidthMinor">75%</item>
+    </style>
+
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622115753045",
+    "project_id": "gods-lambs",
+    "storage_bucket": "gods-lambs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622115753045:android:20c68a0031c991396b18dc",
+        "android_client_info": {
+          "package_name": "com.gods.lambs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDae5ES46o4AZT1AuX6mf3-A0iCoUcPRxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
