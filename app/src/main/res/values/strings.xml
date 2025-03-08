@@ -10,5 +10,6 @@
     <string name="sub_text">Kerala Catholic Bible Society of KCBC Bible Commission</string>
     <string name="success_alert">Congrats! You have passed</string>
     <string name="fail_alert">Oops! You have Failed</string>
+    <string name="next">Next</string>
 
 </resources>

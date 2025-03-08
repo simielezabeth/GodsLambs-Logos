@@ -135,10 +135,11 @@
                     android:id="@+id/next_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Next"
+                    android:text="@string/next"
                     android:layout_marginTop="30dp"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:paddingVertical="10dp"
+                    android:background="@drawable/test"
                     />
 
 
