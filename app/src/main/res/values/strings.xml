@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gods Lambs</string>
+    <string name="app_name">Logos Quiz</string>
     <string name="logos_quiz">Logos Quiz</string>
     <string name="score_title">Congrats! You have passed</string>
     <string name="score_subtitle">You got %1$d out of %2$d questions correct</string>

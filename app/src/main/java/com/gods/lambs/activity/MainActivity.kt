@@ -1,5 +1,6 @@
 package com.gods.lambs.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import com.gods.lambs.adapter.QuizListAdapter
 import com.gods.lambs.adapter.QuizTitleAdapter
 import com.gods.lambs.dataClass.QuizModel
 import com.gods.lambs.dataClass.QuizTitle
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.gods.lambs.databinding.ActivityMainBinding
 import com.google.firebase.database.*
 
@@ -18,6 +20,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var adapter: QuizListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -35,13 +40,23 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun getDataFromFirebase(){
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun getDataFromFirebase() {
         binding.progressBar.visibility = View.VISIBLE
-        FirebaseDatabase.getInstance().reference
-            .get()
-            .addOnSuccessListener { dataSnapshot->
-                if(dataSnapshot.exists()){
-                    for (snapshot in dataSnapshot.children){
+
+        // production - FIREBASE_DB_PROD
+        // val databaseUrl = "https://gods-lambs-default-rtdb.firebaseio.com/"
+
+        // Development - FIREBASE_DB_DEV
+        val databaseUrl = "https://gods-lambs-logos-default-rtdb.firebaseio.com/"
+
+    val databaseReference = FirebaseDatabase.getInstance(databaseUrl).reference
+
+        databaseReference.get()
+            .addOnSuccessListener { dataSnapshot ->
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
                         val quizModel = snapshot.getValue(QuizModel::class.java)
                         if (quizModel != null) {
                             quizModelList.add(quizModel)
@@ -50,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 setupRecyclerView()
             }
-
-
     }
+
+
 }

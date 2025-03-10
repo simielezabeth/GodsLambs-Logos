@@ -20,15 +20,31 @@ android {
             useSupportLibrary = true
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
 
     buildTypes {
+//        release {
+//            isMinifyEnabled = false
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
+
+        debug {
+            buildConfigField("String", "FIREBASE_DB_URL", "\"${project.findProperty("FIREBASE_DB_DEV") ?: ""}\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "FIREBASE_DB_URL", "\"${project.findProperty("FIREBASE_DB_PROD") ?: ""}\"")
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -70,6 +86,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.database)
+    implementation(libs.androidx.core.splashscreen)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

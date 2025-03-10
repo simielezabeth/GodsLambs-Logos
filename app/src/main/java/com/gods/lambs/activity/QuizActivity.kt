@@ -93,6 +93,11 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
             btn1.setBackgroundColor(getColor(R.color.gray))
             btn2.setBackgroundColor(getColor(R.color.gray))
             btn3.setBackgroundColor(getColor(R.color.gray))
+
+            btn0.setTextColor(getColor(R.color.colorAccent))
+            btn1.setTextColor(getColor(R.color.colorAccent))
+            btn2.setTextColor(getColor(R.color.colorAccent))
+            btn3.setTextColor(getColor(R.color.colorAccent))
         }
 
         val clickedBtn = view as Button
@@ -112,6 +117,7 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
             //options button is clicked
             selectedAnswer = clickedBtn.text.toString()
             clickedBtn.setBackgroundColor(getColor(R.color.colorAccent))
+            clickedBtn.setTextColor(Color.WHITE)
         }
     }
 
