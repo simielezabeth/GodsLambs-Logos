@@ -139,7 +139,7 @@
                     android:layout_marginTop="30dp"
                     android:textSize="18sp"
                     android:paddingVertical="10dp"
-                    android:background="@drawable/test"
+                    android:background="@drawable/white_corner_bg"
                     />
 
 

@@ -8,8 +8,9 @@
     <string name="choose_option_alert">Please select answer to continue</string>
     <string name="close">Close</string>
     <string name="sub_text">Kerala Catholic Bible Society of KCBC Bible Commission</string>
-    <string name="success_alert">Congrats! You have passed</string>
-    <string name="fail_alert">Oops! You have Failed</string>
+    <string name="fail_alert">OOPS! YOU HAVE FAILED</string>
     <string name="next">Next</string>
+    <string name="success_alert">CONGRATS! YOU WON</string>
+    <string name="value_message">6 out of 10 questions are correct</string>
 
 </resources>

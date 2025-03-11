@@ -2,6 +2,7 @@ package com.gods.lambs.activity
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.gods.lambs.R
 import com.gods.lambs.dataClass.QuestionModel
 import com.gods.lambs.databinding.ActivityQuizBinding
@@ -138,10 +140,11 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
 
             if (percentage > 60) {
                 scoreTitle.text = context.getString(R.string.success_alert)
-                scoreTitle.setTextColor(Color.BLUE)
+                scoreTitle.setTextColor(getColor(R.color.colorAccent))
             } else {
                 scoreTitle.text = context.getString(R.string.fail_alert)
                 scoreTitle.setTextColor(Color.RED)
+
             }
 
             scoreSubtitle.text = "$score out of $totalQuestions are correct"
@@ -158,6 +161,50 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
 
         dialog.show()
     }
+
+
+//    private fun showScoreDialog(context: Context, score: Int, totalQuestions: Int, onFinish: () -> Unit) {
+//        val percentage = ((score.toFloat() / totalQuestions.toFloat()) * 100).toInt()
+//
+//        val dialogBinding = ScoreDialogBinding.inflate(LayoutInflater.from(context))
+//        dialogBinding.apply {
+//            scoreProgressIndicator.progress = percentage
+//            scoreProgressText.text = "$percentage %"
+//
+//            if (percentage > 60) {
+//                scoreTitle.text = context.getString(R.string.success_alert)
+//                scoreTitle.setTextColor(ContextCompat.getColor(context, R.color.blue))
+//            } else {
+//                scoreTitle.text = context.getString(R.string.fail_alert)
+//                scoreTitle.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
+//            }
+//
+//            scoreSubtitle.text = "$score out of $totalQuestions are correct"
+//
+//            finishBtn.setOnClickListener {
+//                onFinish() // Callback function
+//            }
+//        }
+//
+////        val dialog = AlertDialog.Builder(context, R.style.iOSDialogStyle)
+////            .setView(dialogBinding.root)
+////            .setCancelable(false)
+////            .create()
+////
+////        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // Transparent background
+////        dialog.show()
+//
+//        val dialogView = dialogBinding.root
+//
+//        val dialog = AlertDialog.Builder(context, R.style.iOSDialogStyle)
+//            .setView(dialogView)
+//            .setCancelable(false)
+//            .create()
+////        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // Transparent background
+//
+//        dialog.show()
+//
+//    }
 
 
 }

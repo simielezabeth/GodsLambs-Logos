@@ -7,9 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gods.lambs.adapter.QuizListAdapter
-import com.gods.lambs.adapter.QuizTitleAdapter
 import com.gods.lambs.dataClass.QuizModel
-import com.gods.lambs.dataClass.QuizTitle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.gods.lambs.databinding.ActivityMainBinding
 import com.google.firebase.database.*

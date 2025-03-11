@@ -29,4 +29,17 @@
         <item name="android:windowMinWidthMinor">75%</item>
     </style>
 
+
+    <style name="iOSDialogStyle" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowAnimationStyle">@style/iOSDialogAnimation</item>
+    </style>
+
+    <style name="iOSDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/ios_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/ios_fade_out</item>
+    </style>
+
 </resources>
