@@ -1,13 +1,18 @@
 package com.gods.lambs.activity
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -106,7 +111,7 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
         if(clickedBtn.id==R.id.next_btn){
             //next button is clicked
             if(selectedAnswer.isEmpty()){
-                Toast.makeText(applicationContext,"Please select answer to continue",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,getString(R.string.selectanswer),Toast.LENGTH_SHORT).show()
                 return;
             }
             if(selectedAnswer == questionModelList[currentQuestionIndex].correct){
@@ -132,7 +137,7 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
 
     private fun showScoreDialog(context: Context, score: Int, totalQuestions: Int, onFinish: () -> Unit) {
         val percentage = ((score.toFloat() / totalQuestions.toFloat()) * 100).toInt()
-
+        val fullText :String
         val dialogBinding = ScoreDialogBinding.inflate(LayoutInflater.from(context))
         dialogBinding.apply {
             scoreProgressIndicator.progress = percentage
@@ -141,13 +146,32 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
             if (percentage > 60) {
                 scoreTitle.text = context.getString(R.string.success_alert)
                 scoreTitle.setTextColor(getColor(R.color.colorAccent))
+                 fullText = getString(R.string.score_result_msg) + "  $score " +
+                        getString(R.string.score_result_outof) + "  $totalQuestions " +
+                        getString(R.string.score_result_msg_correct)
             } else {
                 scoreTitle.text = context.getString(R.string.fail_alert)
                 scoreTitle.setTextColor(Color.RED)
-
+                 fullText = getString(R.string.score_result_msg_fail) + "  $score " +
+                        getString(R.string.score_result_outof) + "  $totalQuestions " +
+                        getString(R.string.score_result_msg_correct)
             }
 
-            scoreSubtitle.text = "$score out of $totalQuestions are correct"
+
+
+// Create a SpannableString
+            val spannable = SpannableString(fullText)
+
+            val scoreStart = fullText.indexOf("$score")
+            val scoreEnd = scoreStart + "$score".length
+            val totalStart = fullText.indexOf("$totalQuestions")
+            val totalEnd = totalStart + "$totalQuestions".length
+
+            spannable.setSpan(ForegroundColorSpan(Color.RED), scoreStart, scoreEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannable.setSpan(ForegroundColorSpan(getColor(R.color.colorAccent)), totalStart, totalEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+            scoreSubtitle.text = spannable
+
 
             finishBtn.setOnClickListener {
                 onFinish() // Call the callback function
@@ -158,53 +182,16 @@ class QuizActivity : AppCompatActivity() ,View.OnClickListener{
             .setView(dialogBinding.root)
             .setCancelable(false)
             .create()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialog.window?.setLayout(
+            (Resources.getSystem().displayMetrics.widthPixels * 0.85).toInt(),  // 85% of screen width
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
         dialog.show()
     }
 
-
-//    private fun showScoreDialog(context: Context, score: Int, totalQuestions: Int, onFinish: () -> Unit) {
-//        val percentage = ((score.toFloat() / totalQuestions.toFloat()) * 100).toInt()
-//
-//        val dialogBinding = ScoreDialogBinding.inflate(LayoutInflater.from(context))
-//        dialogBinding.apply {
-//            scoreProgressIndicator.progress = percentage
-//            scoreProgressText.text = "$percentage %"
-//
-//            if (percentage > 60) {
-//                scoreTitle.text = context.getString(R.string.success_alert)
-//                scoreTitle.setTextColor(ContextCompat.getColor(context, R.color.blue))
-//            } else {
-//                scoreTitle.text = context.getString(R.string.fail_alert)
-//                scoreTitle.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
-//            }
-//
-//            scoreSubtitle.text = "$score out of $totalQuestions are correct"
-//
-//            finishBtn.setOnClickListener {
-//                onFinish() // Callback function
-//            }
-//        }
-//
-////        val dialog = AlertDialog.Builder(context, R.style.iOSDialogStyle)
-////            .setView(dialogBinding.root)
-////            .setCancelable(false)
-////            .create()
-////
-////        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // Transparent background
-////        dialog.show()
-//
-//        val dialogView = dialogBinding.root
-//
-//        val dialog = AlertDialog.Builder(context, R.style.iOSDialogStyle)
-//            .setView(dialogView)
-//            .setCancelable(false)
-//            .create()
-////        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // Transparent background
-//
-//        dialog.show()
-//
-//    }
 
 
 }

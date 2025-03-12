@@ -25,25 +25,14 @@ android {
     }
 
     buildTypes {
-//        release {
-//            isMinifyEnabled = false
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
-//        }
-
-        debug {
-            buildConfigField("String", "FIREBASE_DB_URL", "\"${project.findProperty("FIREBASE_DB_DEV") ?: ""}\"")
-        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "FIREBASE_DB_URL", "\"${project.findProperty("FIREBASE_DB_PROD") ?: ""}\"")
         }
+
 
     }
     compileOptions {

@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
 
         // production - FIREBASE_DB_PROD
-        // val databaseUrl = "https://gods-lambs-default-rtdb.firebaseio.com/"
+         val databaseUrl = "https://gods-lambs-default-rtdb.firebaseio.com/"
 
         // Development - FIREBASE_DB_DEV
-        val databaseUrl = "https://gods-lambs-logos-default-rtdb.firebaseio.com/"
+//        val databaseUrl = "https://gods-lambs-logos-default-rtdb.firebaseio.com/"
 
     val databaseReference = FirebaseDatabase.getInstance(databaseUrl).reference
 
